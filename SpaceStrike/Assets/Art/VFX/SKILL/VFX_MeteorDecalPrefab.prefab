@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 7307559025031457058}
   m_Layer: 0
   m_Name: VFX_MeteorDecalPrefab
-  m_TagString: Untagged
+  m_TagString: Skill3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,8 +86,8 @@ Transform:
   m_GameObject: {fileID: 7883966873594125846}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12.727409, y: 3.1429143, z: 18.833378}
+  m_LocalPosition: {x: 0.37564, y: -15.008, z: 1.1861}
+  m_LocalScale: {x: 56.09607, y: 13.852398, z: 83.008125}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2364136196416092780}

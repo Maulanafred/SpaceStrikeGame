@@ -48,14 +48,14 @@ public class EnemyAttribut : MonoBehaviour
         {
             GameObject hitvfx = Instantiate(vfxHit, transform.position, Quaternion.identity);
             Destroy(hitvfx, 4f);
-            ReduceHealthEnemy(100);
+            ReduceHealthEnemy(200);
         }
 
         if (other.CompareTag("Skill3"))
         {
             GameObject hitvfx = Instantiate(vfxHit, transform.position, Quaternion.identity);
             Destroy(hitvfx, 4f);
-            ReduceHealthEnemy(300);
+            ReduceHealthEnemy(100);
         }
 
         if (other.CompareTag("Ultimate"))

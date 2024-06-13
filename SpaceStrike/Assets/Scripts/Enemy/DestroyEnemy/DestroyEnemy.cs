@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class UiManagementMainMenu : MonoBehaviour
-
+public class DestroyEnemy : MonoBehaviour
 {
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +17,9 @@ public class UiManagementMainMenu : MonoBehaviour
         
     }
 
-    public void NewGame()
-    {
-        LoadingScene.instance.LoadNewGame(1);
+    void OnTriggerEnter(Collider other){
+        if(other.CompareTag("Enemy")){
+            Destroy(other.gameObject);
+        }
     }
-
-    //fungsi untuk load scene 
-
-
-    
 }

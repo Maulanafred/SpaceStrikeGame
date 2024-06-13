@@ -51,6 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "HamsterballMaulana.sln",
+    "dotnet.defaultSolution": "SpaceStrike.sln",
     "git.ignoreLimitWarning": true
 }
