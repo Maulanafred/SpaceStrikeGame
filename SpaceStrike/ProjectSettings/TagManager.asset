@@ -11,6 +11,10 @@ TagManager:
   - Ultimate
   - Skill3
   - BasicAttackEnemy
+  - Boss
+  - BasicAttackBoss
+  - MissleBoss
+  - UltimateBoss
   layers:
   - Default
   - TransparentFX

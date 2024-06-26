@@ -26,6 +26,10 @@ public class ShieldHandler : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("basic kena shield");
         }
+        if(other.CompareTag("BasicAttackBoss")){
+            Destroy(other.gameObject);
+            Debug.Log("basic kena shield");
+        }
 
     }
 }

@@ -55,7 +55,7 @@ public class EnemyAttribut : MonoBehaviour
         {
             GameObject hitvfx = Instantiate(vfxHit, transform.position, Quaternion.identity);
             Destroy(hitvfx, 4f);
-            ReduceHealthEnemy(100);
+            ReduceHealthEnemy(300);
         }
 
         if (other.CompareTag("Ultimate"))

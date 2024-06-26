@@ -52,6 +52,10 @@ public class PlayerAttribut : MonoBehaviour
             ReduceHealth(2);
             Destroy(other.gameObject);
         }
+        if(other.CompareTag("BasicAttackBoss") && haveShield == false){
+            ReduceHealth(10);
+            Destroy(other.gameObject);
+        }
     }
 
     // Coroutine for regenerating health

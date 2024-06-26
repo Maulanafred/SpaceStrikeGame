@@ -26,6 +26,8 @@ public class SkillManager : MonoBehaviour
     public Image skill1CooldownImage;
     public GameObject shieldVFXPrefab;
 
+    public GameObject skill1vfxcd;
+
     public KeyCode shieldKey;
     public float skill1CooldownDuration = 5.0f;
     private bool isSkill1OnCooldown = false;
@@ -35,6 +37,8 @@ public class SkillManager : MonoBehaviour
     public Image skill2CooldownImage;
     public KeyCode skill2Key;
     public GameObject healthRegenerationVFX;
+
+    public GameObject skill2vfxcd;
     public float skill2CooldownDuration = 15f;
     private bool isSkill2Cooldown = false;
     private float skill2CooldownTimer = 0.0f;
@@ -45,6 +49,8 @@ public class SkillManager : MonoBehaviour
     public KeyCode skill3Key;
     public GameObject skill3VFX;
     private GameObject currentShieldVFX;
+
+    public GameObject skill3vfxcd;
     public float skill3CooldownDuration = 20f;
     private bool isSkill3Cooldown = false;
     private float skill3CooldownTimer = 0.0f;
@@ -54,6 +60,8 @@ public class SkillManager : MonoBehaviour
     public Transform skill4SpawnPoint;
     public KeyCode skill4Key;
     public GameObject skill4VFX;
+
+    public GameObject skill4vfxcd;
     public float skill4CooldownDuration = 30f;
     private bool isSkill4Cooldown = false;
     private float skill4CooldownTimer = 0.0f;
@@ -63,6 +71,8 @@ public class SkillManager : MonoBehaviour
     public Transform skill5SpawnPoint;
     public KeyCode skill5Key;
     public GameObject skill5VFX;
+
+    public GameObject ultimatevfxcd;
     public float skill5CooldownDuration = 30f;
     private bool isSkill5Cooldown = false;
     private float skill5CooldownTimer = 0.0f;
@@ -206,6 +216,7 @@ public class SkillManager : MonoBehaviour
                 isSkill1OnCooldown = false;
                 skill1CooldownImage.fillAmount = 0;
                 PlayerAttribut.instance.haveShield =false;
+                skill1vfxcd.SetActive(true);
             }
         }
     }
@@ -217,6 +228,8 @@ public class SkillManager : MonoBehaviour
             Destroy(currentShieldVFX);
         }
         PlayerAttribut.instance.haveShield = true;
+
+        skill1vfxcd.SetActive(false);
 
         // Instantiate the shield VFX at the player's position
         currentShieldVFX = Instantiate(shieldVFXPrefab, playerTransform.position, Quaternion.identity);
@@ -245,15 +258,18 @@ public class SkillManager : MonoBehaviour
             {
                 isSkill2Cooldown = false;
                 skill2CooldownImage.fillAmount = 0;
+                skill2vfxcd.SetActive(true);
             }
         }
     }
     void HealthRegeneration()
     {
+        skill2vfxcd.SetActive(false);
         StartCoroutine(regen());
         GameObject healthRegenerationPrefab = Instantiate(healthRegenerationVFX, playerTransform.position, Quaternion.identity);
         healthRegenerationPrefab.transform.SetParent(playerTransform);
         Destroy(healthRegenerationPrefab, 4f);
+
 
         isSkill2Cooldown = true;
         skill2CooldownTimer = skill2CooldownDuration;
@@ -278,12 +294,14 @@ public class SkillManager : MonoBehaviour
             {
                 isSkill3Cooldown = false;
                 skill3CooldownImage.fillAmount = 0;
+                skill3vfxcd.SetActive(true);
             }
         }
     }
 
     void MeteorSkill()
     {
+        skill3vfxcd.SetActive(false);
         GameObject meteor = Instantiate(skill3VFX, skill3SpawnPoint.position, Quaternion.identity);
         Destroy(meteor, 4f);
 
@@ -306,6 +324,7 @@ public class SkillManager : MonoBehaviour
             {
                 isSkill4Cooldown = false;
                 skill4CooldownImage.fillAmount = 0;
+                skill4vfxcd.SetActive(true);
             }
         }
     }
@@ -313,6 +332,7 @@ public class SkillManager : MonoBehaviour
 
     void LightningSkill()
     {
+        skill4vfxcd.SetActive(false);
         GameObject lightning = Instantiate(skill4VFX, skill4SpawnPoint.position, Quaternion.identity);
         Destroy(lightning, 4f);
 
@@ -325,6 +345,9 @@ public class SkillManager : MonoBehaviour
 
     #region Ultimate
     void Ultimate(){
+
+        ultimatevfxcd.SetActive(false);
+
         GameObject ultimate = Instantiate(skill5VFX, skill5SpawnPoint.position, Quaternion.identity);
 
         StartCoroutine(MoveVFXUltimate(ultimate));
@@ -360,6 +383,7 @@ public class SkillManager : MonoBehaviour
             {
                 isSkill5Cooldown = false;
                 skill5CooldownImage.fillAmount = 0;
+                ultimatevfxcd.SetActive(true);
             }
         }
     }

@@ -20,11 +20,11 @@ public class CameraFollow : MonoBehaviour
                               transform.right * offset.x;
     }
 
-    private void OnValidate()
-    {
-        // Update the camera's position in the editor
-        transform.position = player.position - transform.forward * offset.z +
-                              transform.up * offset.y +
-                              transform.right * offset.x;
-    }
+    // private void OnValidate()
+    // {
+    //     // Update the camera's position in the editor
+    //     transform.position = player.position - transform.forward * offset.z +
+    //                           transform.up * offset.y +
+    //                           transform.right * offset.x;
+    //}
 }

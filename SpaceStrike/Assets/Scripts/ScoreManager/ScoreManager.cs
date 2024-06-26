@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+
+
 
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-
     public int score;
-
-    public TMP_Text textscore;
-
+    public TMP_Text scoretext;
 
 
 
@@ -20,23 +17,18 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
 
-        textscore.text = score.ToString();
-    
-        
+        instance = this;
+        scoretext.text = score.ToString();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    public void AddScore(int amount)
-    {
-        score += amount;
-        textscore.text = score.ToString();
+
+    public void AddScore(int value){
+        score += value;
+        scoretext.text = score.ToString();
+        Debug.Log("Tidak bisa");
     }
 }
 
