@@ -20,6 +20,8 @@ public class MissileBoss : MonoBehaviour
         {
             Debug.LogWarning("Objek dengan tag 'Player' tidak ditemukan.");
         }
+
+        StartCoroutine(Destroy());
     }
 
     // Update dipanggil sekali per frame
@@ -43,5 +45,11 @@ public class MissileBoss : MonoBehaviour
             // Gerakkan missile boss menuju player
             transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
+    }
+
+    IEnumerator Destroy(){
+        yield return new WaitForSeconds(6f);
+
+        Destroy(gameObject);
     }
 }

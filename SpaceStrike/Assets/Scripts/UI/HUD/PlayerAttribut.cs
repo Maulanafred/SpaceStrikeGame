@@ -16,6 +16,8 @@ public class PlayerAttribut : MonoBehaviour
 
     public float healthPlayer = 100f;
     public float maxHealth = 100f;
+
+    private bool healthReduced = false;
     
     private float regenerationInterval = 1f; // Interval for regeneration in seconds
 
@@ -56,7 +58,29 @@ public class PlayerAttribut : MonoBehaviour
             ReduceHealth(10);
             Destroy(other.gameObject);
         }
+        if(other.CompareTag("MissleBoss") && haveShield == false){
+            ReduceHealth(2);
+            Destroy(other.gameObject);
+        }
+
+        if(other.CompareTag("UltimateBoss") && !healthReduced ) {
+            if(haveShield == false) {
+                ReduceHealth(60);
+            } 
+            else if(haveShield == true) {
+                ReduceHealth(25);
+            }
+            healthReduced = true; 
+            StartCoroutine(Tunggu());            
+            }
     }
+
+    IEnumerator Tunggu(){
+        yield return new WaitForSeconds(8f);
+        healthReduced = false;
+    }
+
+
 
     // Coroutine for regenerating health
     IEnumerator RegenerateHealth()

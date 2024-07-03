@@ -21,7 +21,7 @@ public class BasicAttackBossHandler : MonoBehaviour
 
     IEnumerator Destroy(){
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         Destroy(this.gameObject);
     }
 }

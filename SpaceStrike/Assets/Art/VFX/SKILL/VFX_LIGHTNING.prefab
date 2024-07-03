@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 747162554028203497}
   - component: {fileID: 3233937565969040486}
   - component: {fileID: 1538308064012050017}
+  - component: {fileID: -1758567915896032000}
   m_Layer: 0
   m_Name: VFX_LIGHTNING
   m_TagString: Skill4
@@ -146,3 +147,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.52
   m_Center: {x: -0.008661524, y: 0, z: -0.018482462}
+--- !u!114 &-1758567915896032000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945084301295132745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9becb3c428eeb784ebc67dcaa932342a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 5712539047133197291}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1061811, y: 3.4251459, z: 3.2663033}
+  m_LocalPosition: {x: 3.1061811, y: 3.4251459, z: -11127.972}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -131,6 +131,8 @@ MonoBehaviour:
   vfxdeath: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50,
     type: 3}
   vfxHit: {fileID: 100002, guid: e9391f622091e1449bdef4ef15af4948, type: 3}
+  sounddeath: {fileID: 7506359802679098345, guid: c5c186b7fa725de459dc065098ffba8a,
+    type: 3}
   healthenemy: 300
 --- !u!114 &5454165181315047573
 MonoBehaviour:

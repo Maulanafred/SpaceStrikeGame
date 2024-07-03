@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAttribut : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyAttribut : MonoBehaviour
     public GameObject vfxdeath;
 
     public GameObject vfxHit;
+
+    public GameObject sounddeath;
     private Transform transform;
     public static EnemyAttribut instance;
     public int healthenemy = 100;
@@ -30,9 +33,22 @@ public class EnemyAttribut : MonoBehaviour
     {
         if (healthenemy <= 0)
         {
+            if (SceneManager.GetActiveScene().name == "Level1")
+            {
+                ScoreManager.instance.AddScore(10);
+  
+            }
+            if(SceneManager.GetActiveScene().name == "Level2")
+            {
+                ScoreManager2.instance.EnemyDefeated();
+
+            }
+            
             Destroy(this.gameObject);
             SpawnDeathVFX();
-            ScoreManager.instance.AddScore(10);
+
+
+            
         }
     }
 
@@ -75,5 +91,8 @@ public class EnemyAttribut : MonoBehaviour
     {
         GameObject deathvfx = Instantiate(vfxdeath, transform.position, Quaternion.identity);
         Destroy(deathvfx, 4f);
+
+        GameObject sfxdeathvfx = Instantiate(sounddeath, transform.position, Quaternion.identity);
+        Destroy(sfxdeathvfx, 4f);
     }
 }

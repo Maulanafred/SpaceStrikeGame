@@ -12,6 +12,8 @@ public class SkillManager : MonoBehaviour
     public Transform basicAttackVFXSpawnPoint;
     public KeyCode basicAttackKey;
     public GameObject cdVFX;
+    public GameObject soundbasicattack;
+
 
     public Image basicAttackCooldownImage;
 
@@ -28,6 +30,8 @@ public class SkillManager : MonoBehaviour
 
     public GameObject skill1vfxcd;
 
+    public GameObject soundskill1;
+
     public KeyCode shieldKey;
     public float skill1CooldownDuration = 5.0f;
     private bool isSkill1OnCooldown = false;
@@ -39,6 +43,8 @@ public class SkillManager : MonoBehaviour
     public GameObject healthRegenerationVFX;
 
     public GameObject skill2vfxcd;
+
+    public GameObject soundskill2;
     public float skill2CooldownDuration = 15f;
     private bool isSkill2Cooldown = false;
     private float skill2CooldownTimer = 0.0f;
@@ -51,6 +57,8 @@ public class SkillManager : MonoBehaviour
     private GameObject currentShieldVFX;
 
     public GameObject skill3vfxcd;
+
+    public GameObject soundskill3;
     public float skill3CooldownDuration = 20f;
     private bool isSkill3Cooldown = false;
     private float skill3CooldownTimer = 0.0f;
@@ -62,6 +70,8 @@ public class SkillManager : MonoBehaviour
     public GameObject skill4VFX;
 
     public GameObject skill4vfxcd;
+
+    public GameObject soundskill4;
     public float skill4CooldownDuration = 30f;
     private bool isSkill4Cooldown = false;
     private float skill4CooldownTimer = 0.0f;
@@ -73,6 +83,8 @@ public class SkillManager : MonoBehaviour
     public GameObject skill5VFX;
 
     public GameObject ultimatevfxcd;
+
+    public GameObject soundskillultimate;
     public float skill5CooldownDuration = 30f;
     private bool isSkill5Cooldown = false;
     private float skill5CooldownTimer = 0.0f;
@@ -157,8 +169,10 @@ public class SkillManager : MonoBehaviour
     {
         // Instantiate the basic attack VFX at the spawn point
         GameObject basicAttackVFX = Instantiate(basicAttackVFXPrefab, basicAttackVFXSpawnPoint.position, Quaternion.identity);
+        GameObject soundbasic = Instantiate(soundbasicattack, basicAttackVFXSpawnPoint.position, Quaternion.identity);
 
         Destroy(basicAttackVFX,3f);
+        Destroy(soundbasic,3f);
 
         cdVFX.SetActive(false);
 
@@ -215,7 +229,7 @@ public class SkillManager : MonoBehaviour
             {
                 isSkill1OnCooldown = false;
                 skill1CooldownImage.fillAmount = 0;
-                PlayerAttribut.instance.haveShield =false;
+                
                 skill1vfxcd.SetActive(true);
             }
         }
@@ -233,16 +247,28 @@ public class SkillManager : MonoBehaviour
 
         // Instantiate the shield VFX at the player's position
         currentShieldVFX = Instantiate(shieldVFXPrefab, playerTransform.position, Quaternion.identity);
+        
+        GameObject sfxskill1 = Instantiate(soundskill1, playerTransform.position, Quaternion.identity);
 
+        sfxskill1.transform.SetParent(playerTransform);
+        
+        Destroy(sfxskill1,10f);
         // The shield VFX should follow the player's position
         currentShieldVFX.transform.SetParent(playerTransform);
 
         Destroy(currentShieldVFX, 5f);
 
+        StartCoroutine(TungguShieldHilang());
+
         // Start the cooldown
         isSkill1OnCooldown = true;
         skill1CooldownTimer = skill1CooldownDuration;
         skill1CooldownImage.fillAmount = 1;
+    }
+
+    IEnumerator TungguShieldHilang(){
+        yield return new WaitForSeconds(5f);
+        PlayerAttribut.instance.haveShield =false;
     }
     #endregion
 
@@ -267,6 +293,11 @@ public class SkillManager : MonoBehaviour
         skill2vfxcd.SetActive(false);
         StartCoroutine(regen());
         GameObject healthRegenerationPrefab = Instantiate(healthRegenerationVFX, playerTransform.position, Quaternion.identity);
+
+        GameObject sfxheal = Instantiate(soundskill2, playerTransform.position, Quaternion.identity);
+        sfxheal.transform.SetParent(playerTransform);
+        Destroy(sfxheal,10f);
+
         healthRegenerationPrefab.transform.SetParent(playerTransform);
         Destroy(healthRegenerationPrefab, 4f);
 
@@ -303,7 +334,11 @@ public class SkillManager : MonoBehaviour
     {
         skill3vfxcd.SetActive(false);
         GameObject meteor = Instantiate(skill3VFX, skill3SpawnPoint.position, Quaternion.identity);
+
+        GameObject sfxmeteor = Instantiate(soundskill3, skill3SpawnPoint.position, Quaternion.identity);
+        
         Destroy(meteor, 4f);
+        Destroy(sfxmeteor, 5f);
 
         isSkill3Cooldown = true;
         skill3CooldownTimer = skill3CooldownDuration;
@@ -334,7 +369,9 @@ public class SkillManager : MonoBehaviour
     {
         skill4vfxcd.SetActive(false);
         GameObject lightning = Instantiate(skill4VFX, skill4SpawnPoint.position, Quaternion.identity);
+        GameObject sfxlightning = Instantiate(soundskill4, skill4SpawnPoint.position, Quaternion.identity); 
         Destroy(lightning, 4f);
+        Destroy(sfxlightning, 8f);
 
         isSkill4Cooldown = true;
         skill4CooldownTimer = skill4CooldownDuration;
@@ -349,11 +386,13 @@ public class SkillManager : MonoBehaviour
         ultimatevfxcd.SetActive(false);
 
         GameObject ultimate = Instantiate(skill5VFX, skill5SpawnPoint.position, Quaternion.identity);
-
+        
+        GameObject sfxultimate = Instantiate(soundskillultimate, skill5SpawnPoint.position, Quaternion.identity);
         StartCoroutine(MoveVFXUltimate(ultimate));
 
 
         Destroy(ultimate, 5f);
+        Destroy(sfxultimate, 8f);
 
         isSkill5Cooldown = true;
         skill5CooldownTimer = skill5CooldownDuration;

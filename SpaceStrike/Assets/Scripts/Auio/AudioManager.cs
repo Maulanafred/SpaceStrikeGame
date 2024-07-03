@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager instance;
     public AudioMixer audioMixer;
 
     public AudioSource[] bgMusic;
@@ -15,8 +16,16 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(instance != null){
+            Destroy(this.gameObject);
+        }
+        else{
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+
+        }
         // biar ga hilang
-        DontDestroyOnLoad(this.gameObject);
+        
 
         //Load save savean le
         float savedVolume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
@@ -40,5 +49,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(int i){
         sfx[i].Play();
+    }
+
+    public void PlayBGM(int i){
+        
+        bgMusic[i].Play();
+    }
+
+    public void StopBGM(int i){
+        
+        bgMusic[i].Stop();
     }
 }

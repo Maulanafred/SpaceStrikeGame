@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -24,7 +25,7 @@ public class UiManagementGame : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver )
         {
             if (isPaused)
             {
@@ -73,6 +74,10 @@ public class UiManagementGame : MonoBehaviour
         gameOverUI.SetActive(true);
     }
 
+    public void Win(){
+
+    }
+
     public void LoadMenu()
     {
         Time.timeScale = 1f;
@@ -81,8 +86,25 @@ public class UiManagementGame : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void Restart()
+    {
+        // Reload the active scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
+    }
+
+
     public void ResetOver()
     {
         // Reset game over state if needed
+    }
+
+    public void StopBGMLevel1(){
+        AudioManager.instance.StopBGM(1);
+
+    }
+    public void StopBGMLevel2(){
+        AudioManager.instance.StopBGM(2);
+
     }
 }

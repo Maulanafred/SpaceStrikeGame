@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 7146976145599195807}
   - component: {fileID: 6189917452407148597}
   - component: {fileID: 1276873810260741326}
+  - component: {fileID: 4604763283316630432}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -235,6 +236,8 @@ MonoBehaviour:
   basicAttackVFXSpawnPoint: {fileID: 8900834313781671961}
   basicAttackKey: 32
   cdVFX: {fileID: 0}
+  soundbasicattack: {fileID: 2491713493107681633, guid: a0d6d7a7518110e40a82b55046c74989,
+    type: 3}
   basicAttackCooldownImage: {fileID: 0}
   basicAttackCooldownDuration: 0.3
   vfxSpeed: 50
@@ -242,13 +245,17 @@ MonoBehaviour:
   shieldVFXPrefab: {fileID: 4772634663576830964, guid: e1385af346f4e624eb313ec1ea4fcd7e,
     type: 3}
   skill1vfxcd: {fileID: 0}
+  soundskill1: {fileID: 3483813716317346721, guid: 6cd29f26fea83a144a37cd91e382ceea,
+    type: 3}
   shieldKey: 49
-  skill1CooldownDuration: 15
+  skill1CooldownDuration: 10
   skill2CooldownImage: {fileID: 0}
   skill2Key: 50
   healthRegenerationVFX: {fileID: 863696848358669098, guid: 59f87adf2f772c4469010e8dfb9bddc1,
     type: 3}
   skill2vfxcd: {fileID: 0}
+  soundskill2: {fileID: 4861546480523769363, guid: 447089295b9d1bf46b73a47377d8a7fc,
+    type: 3}
   skill2CooldownDuration: 25
   skill3CooldownImage: {fileID: 0}
   skill3SpawnPoint: {fileID: 2687168627210214316}
@@ -256,6 +263,8 @@ MonoBehaviour:
   skill3VFX: {fileID: 7883966873594125846, guid: 6aeee1ac8b24a1e45baedae4f3b12b52,
     type: 3}
   skill3vfxcd: {fileID: 0}
+  soundskill3: {fileID: 7561160667139335281, guid: 73529a97f2223444298a872310566467,
+    type: 3}
   skill3CooldownDuration: 30
   skill4CooldownImage: {fileID: 0}
   skill4SpawnPoint: {fileID: 604205335306638870}
@@ -263,12 +272,16 @@ MonoBehaviour:
   skill4VFX: {fileID: 5945084301295132745, guid: a81ea82b97eed534083484077cef13cc,
     type: 3}
   skill4vfxcd: {fileID: 0}
+  soundskill4: {fileID: 5232576633610314174, guid: 7cad3d97f7dc3bb43bc4670e1c5271c2,
+    type: 3}
   skill4CooldownDuration: 30
   skill5CooldownImage: {fileID: 0}
   skill5SpawnPoint: {fileID: 7748298660034740557}
   skill5Key: 113
   skill5VFX: {fileID: 100002, guid: db50ab1c866680e4bb870bf5eb72dd3d, type: 3}
   ultimatevfxcd: {fileID: 0}
+  soundskillultimate: {fileID: 1017399536459588047, guid: aefd649a5385f2041912368df3bc3815,
+    type: 3}
   skill5CooldownDuration: 40
   ultimatespeed: 80
 --- !u!114 &1276873810260741326
@@ -283,7 +296,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ff236e38ae19742a515618670dfc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 10
+--- !u!81 &4604763283316630432
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889869170796451907}
+  m_Enabled: 1
 --- !u!1 &7833924406756318294
 GameObject:
   m_ObjectHideFlags: 0

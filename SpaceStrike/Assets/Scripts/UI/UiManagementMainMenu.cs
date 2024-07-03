@@ -14,6 +14,8 @@ public class UiManagementMainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.PlayBGM(0);
+
         
     }
 
@@ -34,6 +36,8 @@ public class UiManagementMainMenu : MonoBehaviour
     public void NewGame()
     {
         LoadingScene.instance.LoadNewGame(1);
+        AudioManager.instance.StopBGM(0);
+        AudioManager.instance.PlayBGM(1);
     }
 
     public void ShowAbout(){
@@ -54,6 +58,10 @@ public class UiManagementMainMenu : MonoBehaviour
     public void BackMainMenu(){
         options.SetActive(false);
 
+    }
+
+    public void Quit(){
+        Application.Quit();
     }
     
 
